@@ -1,5 +1,5 @@
 {
     'name':'estate',
-    'depends':'base',
+    'depends':['base'],
     'application':True
 }
