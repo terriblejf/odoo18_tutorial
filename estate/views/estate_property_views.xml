@@ -4,8 +4,8 @@
         <field name="name">estate_property_view_list</field>
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
-            <list string="Proprties">
-                <field name="name" string="Title"/>
+            <list string="Properties">
+                <field name="name"/>
                 <field name="postcode"/>
                 <field name="bedrooms"/>
                 <field name="living_area"/>
