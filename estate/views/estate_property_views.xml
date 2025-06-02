@@ -15,4 +15,19 @@
             </list>
         </field>
     </record>
+
+    <record id="estate_property_view_form" model="ir.ui.view">
+        <field name="name">estate_property_view_form</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"/>
+                    <field name="postcode"/>
+                    <field name="bedrooms"/>
+                    <field name="garage"/>
+                </group>
+            </form>
+        </field>
+    </record>
 </odoo>
