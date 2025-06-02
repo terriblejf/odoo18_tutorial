@@ -25,7 +25,7 @@
                     <h1>
                         <field name="name"/>
                     </h1>
-                    <label string=""/>
+                    <label string=" "/>
                     <group>
                         <group>
                             <field name="postcode"/>
