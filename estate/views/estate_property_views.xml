@@ -21,16 +21,18 @@
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
             <form>
-                <group>
+                <sheet>
                     <group>
-                        <field name="name"/>
-                        <field name="postcode"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="postcode"/>
+                        </group>
+                        <group>
+                            <field name="bedrooms"/>
+                            <field name="garage"/>
+                        </group>
                     </group>
-                    <group>
-                        <field name="bedrooms"/>
-                        <field name="garage"/>
-                    </group>
-                </group>
+                </sheet>
             </form>
         </field>
     </record>
