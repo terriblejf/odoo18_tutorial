@@ -22,12 +22,14 @@
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="bedrooms"/>
-                    <field name="garage"/>
-                </group>
-                <group>
-                    <field name="name"/>
-                    <field name="postcode"/>
+                    <group>
+                        <field name="name"/>
+                        <field name="postcode"/>
+                    </group>
+                    <group>
+                        <field name="bedrooms"/>
+                        <field name="garage"/>
+                    </group>
                 </group>
             </form>
         </field>
