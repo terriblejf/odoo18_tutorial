@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 
 class estate_property(models.Model):
     _name = "estate_property"
-    _description = "*Description*"
+    _description = "property information"
 
     name = fields.Char(required = True)
     description = fields.Text()
@@ -18,6 +18,7 @@ class estate_property(models.Model):
     garage = fields.Boolean()
     garden = fields.Boolean()
     garden_area = fields.Integer()
+    property_type_id = fields.Many2one("estate_property", string="Property type")
     garden_orientation = fields.Selection(
         [
             ('north', 'North'),
