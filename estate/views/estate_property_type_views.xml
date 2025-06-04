@@ -6,7 +6,12 @@
         <field name="arch" type="xml">
             <form string="Property Type">
                 <sheet>
-                    <field name="name" string="Type"/>
+                    <h1>Property Types</h1>
+                    <group>
+                        <group>
+                            <field name="name" string="Type"/>
+                        </group>
+                    </group>
                 </sheet>
             </form>
         </field>

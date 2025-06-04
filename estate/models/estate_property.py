@@ -18,7 +18,7 @@ class estate_property(models.Model):
     garage = fields.Boolean()
     garden = fields.Boolean()
     garden_area = fields.Integer()
-    property_type_id = fields.Many2one("estate_property", string="Property type")
+    property_type_id = fields.Many2one("estate_property_type", string="Property type")
     garden_orientation = fields.Selection(
         [
             ('north', 'North'),
