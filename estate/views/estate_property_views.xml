@@ -60,7 +60,7 @@
                         <page>
                             <group>
                                 <group>
-                                    <field name="salesman"/>
+                                    <field name="salesperson"/>
                                     <field name="buyer"/>
                                 </group>
                                 <group>
