@@ -57,7 +57,7 @@
                                 </group>
                             </group>
                         </page>
-                        <page>
+                        <page string="Other Info">
                             <group>
                                 <group>
                                     <field name="salesperson"/>
