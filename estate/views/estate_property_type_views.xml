@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <odoo>
     <record id="estate_property_type_view_form" model="ir.ui.view">
-        <field name="name">estate_property_type_views</field>
+        <field name="name">estate_property_type_view_form</field>
         <field name="model">estate_property_type</field>
         <field name="arch" type="xml">
             <form string="Property Type">
                 <sheet>
                     <h1>Property Types</h1>
+                    <separator />
                     <group>
                         <group>
                             <field name="name" string="Type"/>
@@ -14,6 +15,16 @@
                     </group>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record id="estate_property_type_view_list" model="ir.ui.view">
+        <field name="name">estate_property_type_view_list</field>
+        <field name="model">estate_property_type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
         </field>
     </record>
 </odoo>
