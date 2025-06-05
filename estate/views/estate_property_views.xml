@@ -57,6 +57,16 @@
                                 </group>
                             </group>
                         </page>
+                        <page>
+                            <group>
+                                <group>
+                                    <field name="salesman"/>
+                                    <field name="buyer"/>
+                                </group>
+                                <group>
+                                </group>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
