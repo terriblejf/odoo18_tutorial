@@ -57,10 +57,11 @@
                                     <field name="garden"/>
                                     <field name="garden_area"/>
                                     <field name="garden_orientation"/>
+                                    <field name="total_area"/>
                                 </group>
                             </group>
                         </page>
-                        <page string="Description">
+                        <page string="Offers">
                             <field name="offer_ids">
                                 <list>
                                     <field name="price"/>

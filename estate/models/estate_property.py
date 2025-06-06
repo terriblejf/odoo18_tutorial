@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
 
@@ -40,3 +40,8 @@ class estate_property(models.Model):
     buyer = fields.Char()
     tag_ids = fields.Many2many("estate_property_tag")
     offer_ids = fields.One2many("estate_property_offer", "property_id")
+    total_area = fields.Integer(compute="_total_area", readonly=True)
+
+    @api.depends("living_area", "garden_area")
+    def _total_area(self):
+        return self.living_area + self.garden_area
