@@ -40,8 +40,8 @@ class estate_property(models.Model):
     buyer = fields.Char()
     tag_ids = fields.Many2many("estate_property_tag")
     offer_ids = fields.One2many("estate_property_offer", "property_id")
-    total_area = fields.Integer(compute="_total_area", readonly=True)
-    best_price = fields.Float(compute="_best_price", readonly=True)
+    total_area = fields.Integer(compute="_total_area")
+    best_price = fields.Float(compute="_best_price")
 
     @api.depends("living_area", "garden_area")
     def _total_area(self):
@@ -51,5 +51,7 @@ class estate_property(models.Model):
     def _best_price(self):
         if self.offer_ids:
             self.best_price = max(self.offer_ids.mapped('price'))
+        else:
+            self.best_price = self.best_price
 
     
