@@ -44,5 +44,4 @@ class estate_property(models.Model):
 
     @api.depends("living_area", "garden_area")
     def _total_area(self):
-        total = self.living_area + self.garden_area
-        return total
+        self.total_area = self.living_area + self.garden_area
