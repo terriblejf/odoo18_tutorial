@@ -12,7 +12,7 @@
                         <group>
                             <field name="price"/>
                             <field name="partner_id" string="Partner"/>
-                            <field name="validity" />
+                            <field name="vality" />
                             <field name="date_deadline" string="Deadline"/>
                             <field name="status"/>
                         </group>
@@ -29,7 +29,7 @@
             <list>
                 <field name="price"/>
                 <field name="partner_id" string="Partner"/>
-                <field name="validity" />
+                <field name="vality" />
                 <field name="date_deadline" string="Deadline"/>
                 <field name="status"/>
             </list>
