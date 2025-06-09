@@ -18,8 +18,7 @@ class estate_property_tag(models.Model):
             self.date_deadline = self.create_date.date() + timedelta(days=self.vality)
         else:
             self.date_deadline = self.date_deadline
-
-    @api.depends("date_deadline")
+            
     def _vality(self):
         if self.date_deadline and self.create_date:
             self.vality = self.date_deadline() - timedelta(days=self.create_date)
