@@ -1,5 +1,6 @@
 from odoo import models, fields, api
-from datetime import timedelta
+from datetime import date, timedelta
+from dateutil.relativedelta import relativedelta
 
 class estate_property_tag(models.Model):
     _name = "estate_property_offer"
@@ -15,13 +16,13 @@ class estate_property_tag(models.Model):
     @api.depends("vality")
     def _deadline(self):
         if self.vality and self.create_date:
-            self.date_deadline = self.create_date.date() + timedelta(days=self.vality)
+            self.date_deadline = self.create_date.date() + relativedelta(days=self.vality)
         else:
             self.date_deadline = self.date_deadline
 
     @api.depends("date_deadline")
     def _vality(self):
         if self.date_deadline and self.create_date:
-            self.vality = self.date_deadline() - timedelta(days=self.create_date)
+            self.vality = self.date_deadline() - relativedelta(days=self.create_date)
         else:
             self.vality = self.vality
