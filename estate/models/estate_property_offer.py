@@ -14,13 +14,15 @@ class estate_property_tag(models.Model):
 
     @api.depends("vality")
     def _deadline(self):
-        if self.vality and self.create_date:
-            self.date_deadline = self.create_date + timedelta(days=self.vality)
-        else:
-            self.date_deadline = self.date_deadline
+        for record in self:
+            if self.vality and self.create_date:
+                self.date_deadline = self.create_date + timedelta(days=self.vality)
+            else:
+                self.date_deadline = self.date_deadline
 
     def _vality(self):
-        if self.date_deadline and self.create_date:
-            self.vality = (self.date_deadline - self.create_date).days
-        else:
-            self.vality = self.vality
+        for record in self:
+            if self.date_deadline and self.create_date:
+                self.vality = (self.date_deadline - self.create_date).days
+            else:
+                self.vality = self.vality
