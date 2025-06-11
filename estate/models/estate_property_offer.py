@@ -6,11 +6,11 @@ class estate_property_tag(models.Model):
     _description = "offers of properties"
 
     price = fields.Float()
-    status = fields.Selection([('accepted','Accepted'),('refused','Refused')],copy=False)
+    status = fields.Selection([('accepted','Accepted'),('refused','Refused')],copy=False, readonly=True)
     partner_id = fields.Many2one("res.partner", required=True)
     property_id = fields.Many2one("estate_property", required=True)
     vality = fields.Integer()
-    date_deadline = fields.Date(compute="_deadline", inverse="_vality")
+    date_deadline = fields.Date()
 
     @api.depends("vality")
     def _deadline(self):
@@ -26,3 +26,5 @@ class estate_property_tag(models.Model):
                 self.vality = (self.date_deadline - self.create_date).days
             else:
                 self.vality = self.vality
+
+    
