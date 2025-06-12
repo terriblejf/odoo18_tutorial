@@ -64,21 +64,21 @@ class estate_property(models.Model):
             self.garden_orientation = False
 
     def sold_action(self):
-        if self.state == "sold":
+        if self.state == 'sold':
             raise UserError("The property is already sold")
-        elif self.state == "cancelled":
+        elif self.state == 'cancelled':
             raise UserError("The property is cancelled")
         else:
-            self.state = "sold"
+            self.state = 'sold'
         return True
     
     def cancel_action(self):
-        if self.state == "sold":
+        if self.state == 'sold':
             raise UserError("The property is sold")
-        elif self.state == "cancelled":
+        elif self.state == 'cancelled':
             raise UserError("The property is alredy cancelled")
         else:
-            self.state = "cancelled"
+            self.state = 'cancelled'
         return True
             
 
