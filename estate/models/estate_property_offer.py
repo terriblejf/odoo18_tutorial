@@ -33,7 +33,7 @@ class estate_property_tag(models.Model):
             self.status = 'accepted'
         return True
     
-    def cancel_action(self):
+    def refuse_action(self):
         if self.status == False:
             self.status = 'refused'
         return True
