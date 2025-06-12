@@ -83,8 +83,8 @@ class estate_property(models.Model):
         return True
             
     _sql_constraints = [
-        ('check_expected_price', 'CHECK(expected_price > 0)', 'Only positive values.'),
-        ('check_selling_price', 'CHECK(selling_price > 0)', 'Only positive values.'),
+        ('check_expected_price', 'check(expected_price > 0)', 'Only positive values.'),
+        ('check_selling_price', 'check(selling_price > 0)', 'Only positive values.'),
     ]
 
     
