@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
 from datetime import timedelta
 
 class estate_property_tag(models.Model):
@@ -27,4 +28,14 @@ class estate_property_tag(models.Model):
             else:
                 self.vality = self.vality
 
+    def accept_action(self):
+        if self.status == False:
+            self.status = 'accepted'
+        return True
+    
+    def cancel_action(self):
+        if self.status == False:
+            self.status = 'refused'
+        return True
+            
     
