@@ -29,6 +29,11 @@ class estate_property_tag(models.Model):
                 self.vality = self.vality
 
     def accept_action(self):
+        ofertas = self.env['estate.property.offer'].search([])
+        for oferta in ofertas:
+            if oferta.status == 'accepted':
+                raise UserError("There is an offer accepted alredy")
+                return True
         if self.status == False:
             self.status = 'accepted'
         return True
@@ -38,4 +43,6 @@ class estate_property_tag(models.Model):
             self.status = 'refused'
         return True
             
-    
+    _sql_constraints = [
+        ('check_offer_price', 'CHECK(price > 0)', 'Only positive values.')
+    ]
