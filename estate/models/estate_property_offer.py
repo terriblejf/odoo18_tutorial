@@ -11,20 +11,20 @@ class estate_property_tag(models.Model):
     partner_id = fields.Many2one("res.partner", required=True)
     property_id = fields.Many2one("estate_property", required=True)
     vality = fields.Integer()
-    date_deadline = fields.Date(compute="_deadline", inverse="_vality")
+    date_deadline = fields.Date(compute="_compute_date_deadline", inverse="_inverse_date_deadline")
 
     _sql_constraints = [
         ('check_offer_price', 'CHECK(price > 0)', 'Only positive values.')
     ]
 
     @api.depends("vality")
-    def _compute_deadline(self):
+    def _compute_date_deadline(self):
         if self.vality > 0:
             self.date_deadline = date.today() + timedelta(days=self.vality)
         else:
             self.date_deadline = self.date_deadline
 
-    def _inverse_deadline(self):
+    def _inverse_date_deadline(self):
         self.vality = 10
 
     def accept_action(self):
