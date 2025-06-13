@@ -6,7 +6,7 @@ class estate_property_tag(models.Model):
     _name = "estate_property_offer"
     _description = "offers of properties"
 
-    price = fields.Float()
+    price = fields.Float(required=True)
     status = fields.Selection([('accepted','Accepted'),('refused','Refused')],copy=False, readonly=True)
     partner_id = fields.Many2one("res.partner", required=True)
     property_id = fields.Many2one("estate_property", required=True)
