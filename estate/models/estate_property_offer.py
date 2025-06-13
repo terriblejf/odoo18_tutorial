@@ -18,13 +18,13 @@ class estate_property_tag(models.Model):
     ]
 
     @api.depends("vality")
-    def _deadline(self):
+    def _compute_deadline(self):
         if self.vality > 0:
             self.date_deadline = date.today() + timedelta(days=self.vality)
         else:
             self.date_deadline = self.date_deadline
 
-    def _vality(self):
+    def _inverse_deadline(self):
         self.vality = 10
 
     def accept_action(self):
