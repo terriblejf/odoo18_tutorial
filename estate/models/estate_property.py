@@ -44,6 +44,10 @@ class estate_property(models.Model):
     total_area = fields.Integer(compute="_total_area")
     best_price = fields.Float(compute="_best_price")
 
+    _sql_constraints = [
+        ('check_expected_price', 'CHECK(expected_price > 0)', 'Only positive values.')
+    ]
+
     @api.depends("living_area", "garden_area")
     def _total_area(self):
         self.total_area = self.living_area + self.garden_area
@@ -82,8 +86,6 @@ class estate_property(models.Model):
             self.state = 'cancelled'
         return True
             
-    _sql_constraints = [
-        ('check_expected_price', 'CHECK(expected_price > 0)', 'Only positive values.')
-    ]
+    
 
     
