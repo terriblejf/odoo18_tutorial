@@ -25,10 +25,7 @@ class estate_property_tag(models.Model):
             self.date_deadline = self.date_deadline
 
     def _vality(self):
-        if self.date_deadline:
-            self.vality = (self.date_deadline - date.today()).days
-        else:
-            self.vality = self.vality
+        self.vality = 10
 
     def accept_action(self):
         ofertas = self.env['estate.property.offer'].search([])
