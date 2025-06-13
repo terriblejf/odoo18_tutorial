@@ -24,7 +24,6 @@ class estate_property_tag(models.Model):
         else:
             self.date_deadline = self.date_deadline
 
-    @api.depends("date_deadline")
     def _vality(self):
         self.vality = 10
 
