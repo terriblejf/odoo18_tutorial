@@ -1,6 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError
-from datetime import timedelta
+from datetime import timedelta, date
 
 class estate_property_tag(models.Model):
     _name = "estate_property_offer"
@@ -11,22 +11,24 @@ class estate_property_tag(models.Model):
     partner_id = fields.Many2one("res.partner", required=True)
     property_id = fields.Many2one("estate_property", required=True)
     vality = fields.Integer()
-    date_deadline = fields.Date()
+    date_deadline = fields.Date(compute="_deadline", inverse="_vality")
+
+    _sql_constraints = [
+        ('check_offer_price', 'CHECK(price > 0)', 'Only positive values.')
+    ]
 
     @api.depends("vality")
     def _deadline(self):
-        for record in self:
-            if self.vality and self.create_date:
-                self.date_deadline = self.create_date + timedelta(days=self.vality)
-            else:
-                self.date_deadline = self.date_deadline
+        if self.vality > 0:
+            self.date_deadline = date.today() + timedelta(days=self.vality)
+        else:
+            self.date_deadline = self.date_deadline
 
     def _vality(self):
-        for record in self:
-            if self.date_deadline and self.create_date:
-                self.vality = (self.date_deadline - self.create_date).days
-            else:
-                self.vality = self.vality
+        if self.date_deadline:
+            self.vality = (self.date_deadline - date.today()).days
+        else:
+            self.vality = self.vality
 
     def accept_action(self):
         ofertas = self.env['estate.property.offer'].search([])
@@ -43,6 +45,3 @@ class estate_property_tag(models.Model):
             self.status = 'refused'
         return True
             
-    _sql_constraints = [
-        ('check_offer_price', 'CHECK(price > 0)', 'Only positive values.')
-    ]
