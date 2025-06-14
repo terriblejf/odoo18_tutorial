@@ -11,7 +11,7 @@ class estate_property_tag(models.Model):
     partner_id = fields.Many2one("res.partner", required=True)
     property_id = fields.Many2one("estate_property", required=True)
     vality = fields.Integer()
-    date_deadline = fields.Date(compute='_compute_date_deadline', inverse='_inverse_date_deadline')
+    date_deadline = fields.Date()
 
     _sql_constraints = [
         ('check_offer_price', 'CHECK(price > 0)', 'Only positive values.')
