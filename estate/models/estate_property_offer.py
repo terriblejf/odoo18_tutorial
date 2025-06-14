@@ -14,9 +14,7 @@ class estate_property_tag(models.Model):
     partner_id = fields.Many2one("res.partner", required=True)
     property_id = fields.Many2one("estate_property", required=True)
     vality = fields.Integer()
-    date_deadline = fields.Date(
-        compute="_compute_date_deadline"
-    )
+    date_deadline = fields.Date()
 
     _sql_constraints = [
         ("check_offer_price", "CHECK(price > 0)", "Only positive values.")
@@ -36,13 +34,4 @@ class estate_property_tag(models.Model):
         if self.status == False:
             self.status = "refused"
         return True
-
-    @api.depends("vality")
-    def _compute_date_deadline(self):
-        for records in self:
-            self.date_deadline = date.today() + timedelta(days=self.vality)
-
-    def _inverse_date_deadline(self):
-        for records in self:
-            records.vality = (self.date_deadline - date.today()).days
             
