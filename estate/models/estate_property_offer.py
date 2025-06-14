@@ -39,13 +39,10 @@ class estate_property_tag(models.Model):
 
     @api.depends("vality")
     def _compute_date_deadline(self):
-        if self.vality > 0:
+        for records in self:
             self.date_deadline = date.today() + timedelta(days=self.vality)
-        else:
-            self.date_deadline = self.date_deadline
 
     def _inverse_date_deadline(self):
-        if self.date_deadline:
-            self.vality = (self.date_deadline - date.today()).days
-        else:
-            self.vality = self.vality
+        for records in self:
+            records.vality = (self.date_deadline - date.today()).days
+            
