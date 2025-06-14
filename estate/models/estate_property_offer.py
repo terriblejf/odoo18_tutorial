@@ -15,7 +15,7 @@ class estate_property_tag(models.Model):
     property_id = fields.Many2one("estate_property", required=True)
     vality = fields.Integer()
     date_deadline = fields.Date(
-        compute="_compute_date_deadline", inverse="_inverse_date_deadline"
+        compute="_compute_date_deadline"
     )
 
     _sql_constraints = [
