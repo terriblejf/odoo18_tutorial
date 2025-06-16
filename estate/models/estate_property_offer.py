@@ -29,6 +29,7 @@ class estate_property_tag(models.Model):
         for record in self:
             record.vality = (record.date_deadline - date.today()).days
 
+    
     def accept_action(self):
         for record in self:
             ofertas = record.env["estate.property.offer"].search([])
@@ -38,6 +39,8 @@ class estate_property_tag(models.Model):
                     return True
             if record.status == False:
                 record.status = "accepted"
+                record.property_id.salesperson = record.partner_id
+                record.property_id.selling_price = record.price
             return True
 
     def refuse_action(self):
