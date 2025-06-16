@@ -14,24 +14,34 @@ class estate_property_tag(models.Model):
     partner_id = fields.Many2one("res.partner", required=True)
     property_id = fields.Many2one("estate_property", required=True)
     vality = fields.Integer()
-    date_deadline = fields.Date()
+    date_deadline = fields.Date(compute="_compute_date_deadline", inverse="_inverse_date_deadline")
 
     _sql_constraints = [
         ("check_offer_price", "CHECK(price > 0)", "Only positive values.")
     ]
+    
+    @api.depends("vality")
+    def _compute_date_deadline(self):
+        for record in self:
+            record.date_deadline = date.today() + timedelta(days=record.vality)
+        
+    def _inverse_date_deadline(self):
+        for record in self:
+            record.vality = (record.date_deadline - date.today()).days
 
     def accept_action(self):
-        ofertas = self.env["estate.property.offer"].search([])
-        for oferta in ofertas:
-            if oferta.status == "accepted":
-                raise UserError("There is an offer accepted alredy")
-                return True
-        if self.status == False:
-            self.status = "accepted"
-        return True
+        for record in self:
+            ofertas = record.env["estate.property.offer"].search([])
+            for oferta in ofertas:
+                if oferta.status == "accepted":
+                    raise UserError("There is an offer accepted alredy")
+                    return True
+            if record.status == False:
+                record.status = "accepted"
+            return True
 
     def refuse_action(self):
-        if self.status == False:
-            self.status = "refused"
-        return True
-            
+        for record in self:
+            if record.status == False:
+                record.status = "refused"
+            return True

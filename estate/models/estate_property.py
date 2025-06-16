@@ -54,10 +54,11 @@ class estate_property(models.Model):
     
     @api.depends("offer_ids.price")
     def _best_price(self):
-        if self.offer_ids:
-            self.best_price = max(self.offer_ids.mapped('price'))
-        else:
-            self.best_price = self.best_price
+        for record in self:
+            if record.offer_ids:
+                record.best_price = max(record.offer_ids.mapped('price'))
+            else:
+                record.best_price = record.best_price
 
     @api.onchange("garden")
     def _onchange_garden(self):
