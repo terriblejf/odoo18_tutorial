@@ -37,7 +37,7 @@ class estate_property(models.Model):
         ('cancelled','Cancelled')
     ], default='new', required=True, copy=False, readonly=True)
     property_type_id = fields.Many2one("estate_property_type", string="Property type")
-    salesperson = fields.Many2one('res.users', string='Salesperson', copy=False)
+    salesperson = fields.Many2one('res.partner', string='Salesperson', copy=False, default=lambda self: self.env.partner)
     buyer = fields.Char()
     tag_ids = fields.Many2many("estate_property_tag")
     offer_ids = fields.One2many("estate_property_offer", "property_id")
