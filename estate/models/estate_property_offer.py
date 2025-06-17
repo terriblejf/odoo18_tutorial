@@ -38,7 +38,7 @@ class estate_property_tag(models.Model):
                     return True
             if record.status == False:
                 record.status = "accepted"
-                record.property_id.salesperson = record.partner_id
+                record.property_id.salesperson = record.partner_id.id
                 record.property_id.selling_price = record.price
             return True
 
