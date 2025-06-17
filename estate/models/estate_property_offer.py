@@ -17,7 +17,7 @@ class estate_property_tag(models.Model):
     date_deadline = fields.Date(compute="_compute_date_deadline", inverse="_inverse_date_deadline")
 
     _sql_constraints = [
-        ("check_offer_price", "CHECK(price > 0)", "Only positive values.")
+        ('check_offer_price', 'CHECK(price > 0)', 'Only positive values.')
     ]
     
     @api.depends("vality")
@@ -35,7 +35,6 @@ class estate_property_tag(models.Model):
             for oferta in record.property_id.offer_ids:
                 if oferta.status == "accepted":
                     raise UserError("There is an offer accepted alredy")
-                    return True
             if record.status == False:
                 record.status = "accepted"
                 record.property_id.salesperson = record.partner_id.id
