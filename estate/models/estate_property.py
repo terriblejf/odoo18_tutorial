@@ -75,7 +75,14 @@ class estate_property(models.Model):
         elif self.state == 'cancelled':
             raise UserError("The property is cancelled")
         else:
-            self.state = 'sold'
+            sold = False
+            for offer in self.offer_ids:
+                if offer.status == 'accepted':
+                    sold = True
+            if sold:
+                self.state = 'sold'
+            else:
+                raise UserError("Accept an offer before sold")
         return True
     
     def cancel_action(self):
