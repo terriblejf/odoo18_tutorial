@@ -7,5 +7,5 @@ class estate_property_tag(models.Model):
     name = fields.Char(required=True)
 
     _sql_constraints = [
-        ('unique_name', 'unique(name)', 'That tag does exist alredy.')
+        ('unique_tag_name', 'unique(name)', 'That tag does exist alredy.')
     ]
