@@ -32,13 +32,14 @@ class estate_property_tag(models.Model):
     
     def accept_action(self):
         for record in self:
-            ofertas = record.env["estate.property.offer"].search([])
-            for oferta in ofertas:
+            for oferta in record.property_id.offer_ids:
                 if oferta.status == "accepted":
                     raise UserError("There is an offer accepted alredy")
                     return True
             if record.status == False:
                 record.status = "accepted"
+                record.property_id.salesperson = record.partner_id
+                record.property_id.selling_price = record.price
             return True
 
     def refuse_action(self):
