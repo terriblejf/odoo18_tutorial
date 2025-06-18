@@ -16,11 +16,11 @@
                     <notebook>
                         <page string="Properties">
                             <field name="property_ids">
-                                <tree>
+                                <list>
                                     <field name="name"/>
                                     <field name="expected_price" string="Expected Price"/>
                                     <field name="state" />
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </notebook>
