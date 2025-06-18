@@ -51,7 +51,7 @@ class estate_property(models.Model):
         ('check_selling_price', 'CHECK(selling_price > 0)', 'Only positive values.')
     ]
     
-    @api.constraints("selling_price")
+    @api.constrains("selling_price")
     def _check_selling_price(self):
         for record in self:
             min = record.expected_price/100*90
