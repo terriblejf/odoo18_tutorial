@@ -61,12 +61,12 @@ class estate_property(models.Model):
     @api.depends("offer_ids")
     def _offers_state(self):
         for record in self:
-            if self.offer_ids:
-                for offer in self.offer_ids:
+            if record.offer_ids:
+                for offer in record.offer_ids:
                     if offer.status == 'accepted':
-                        self.state = 'offer_accepted'
+                        record.state = 'offer_accepted'
                         return
-                self.state = 'offer_recived'
+                record.state = 'offer_recived'
                     
 
     @api.depends("living_area", "garden_area")

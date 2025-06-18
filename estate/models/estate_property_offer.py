@@ -46,3 +46,4 @@ class estate_property_tag(models.Model):
             if record.status == False:
                 record.status = "refused"
             return True
+        
