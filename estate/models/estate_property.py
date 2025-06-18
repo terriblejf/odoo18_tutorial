@@ -58,15 +58,14 @@ class estate_property(models.Model):
             if float_compare(min, record.selling_price, precision_digits=2) == 1:
                 raise ValidationError("Offer price must be at least 90 percent of the expected price")
             
-    @api.depends("offer_ids")
+    @api.depends("offer_ids.status")
     def _offers_state(self):
         for record in self:
             if record.offer_ids:
-                for offer in record.offer_ids:
-                    if offer.status == 'accepted':
-                        record.state = 'offer_accepted'
-                        return
-                record.state = 'offer_recived'
+                if any(offer.status == 'accepted' for offer in record.offer_ids):
+                    record.state = 'offer_accepted'
+                else:
+                    record.state = 'offer_recived'
                     
 
     @api.depends("living_area", "garden_area")
