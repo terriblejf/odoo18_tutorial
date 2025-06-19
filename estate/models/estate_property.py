@@ -8,6 +8,7 @@ from dateutil.relativedelta import relativedelta
 class estate_property(models.Model):
     _name = "estate_property"
     _description = "property information"
+    _order = "id desc"
 
     name = fields.Char(required = True)
     description = fields.Text()

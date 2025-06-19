@@ -6,6 +6,7 @@ from datetime import timedelta, date
 class estate_property_tag(models.Model):
     _name = "estate_property_offer"
     _description = "offers of properties"
+    _order = "price desc"
 
     price = fields.Float(required=True)
     status = fields.Selection(
