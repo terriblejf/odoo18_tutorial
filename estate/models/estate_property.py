@@ -39,10 +39,10 @@ class estate_property(models.Model):
         ('sold','Sold'),
         ('cancelled','Cancelled')
     ], default='new', required=True, copy=False, readonly=True, computed="_offers_state")
-    property_type_id = fields.Many2one("estate_property_type", string="Property type")
+    property_type_id = fields.Many2one("estate_property_type", string="Property type", options="{'no_create': True, 'no_create_edit': True}")
     salesperson = fields.Many2one('res.partner', string='Salesperson', copy=False)
     buyer = fields.Char()
-    tag_ids = fields.Many2many("estate_property_tag")
+    tag_ids = fields.Many2many("estate_property_tag", options="{'color_field': 'color'}")
     offer_ids = fields.One2many("estate_property_offer", "property_id")
     total_area = fields.Integer(compute="_total_area")
     best_price = fields.Float(compute="_best_price")

@@ -6,6 +6,7 @@ class estate_property_tag(models.Model):
     _order = "name"
 
     name = fields.Char(required=True)
+    color = fields.Integer()
 
     _sql_constraints = [
         ('unique_tag_name', 'unique(name)', 'That tag does exist alredy.')
