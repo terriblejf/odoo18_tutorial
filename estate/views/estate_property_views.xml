@@ -33,7 +33,7 @@
                         <field name="name"/>
                     </h1>
                     <group>
-                        <field name="tag_ids" widget="many2many_tags" string="Tags"/>
+                        <field name="tag_ids" widget="many2many_tags" string="Tags" options="{'color_field': 'color'}"/>
                     </group>
                     <separator string=" " colspan="2"/>
 
