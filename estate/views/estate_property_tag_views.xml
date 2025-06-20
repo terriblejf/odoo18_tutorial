@@ -22,7 +22,7 @@
         <field name="name">estate_property_tag_view_list</field>
         <field name="model">estate_property_tag</field>
         <field name="arch" type="xml">
-            <list>
+            <list editable="bottom">
                 <field name="name"/>
             </list>
         </field>
