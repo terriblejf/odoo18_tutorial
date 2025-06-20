@@ -76,7 +76,7 @@
                                     <field name="date_deadline" string="Deadline"/>
                                     <button name="accept_action" string="Accept" type="object" icon="fa-check" invisible="status != False"/>
                                     <button name="refuse_action" string="Refuse" type="object" icon="fa-times" invisible="status != False"/>
-                                    <field name="status" invisible="True"/>
+                                    <field name="status"/>
                                 </list>
                             </field>
                         </page>
