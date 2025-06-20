@@ -21,6 +21,13 @@ class estate_property_tag(models.Model):
         ('check_offer_price', 'CHECK(price > 0)', 'Only positive values.')
     ]
     
+    @api.model
+    def create(self, vals):
+        res = super().create(vals)
+        if res.property_id.state == 'new':
+            res.property_id.state = 'offer_recived'
+        return res
+    
     @api.depends("vality")
     def _compute_date_deadline(self):
         for record in self:
@@ -40,6 +47,7 @@ class estate_property_tag(models.Model):
                 record.status = "accepted"
                 record.property_id.salesperson = record.partner_id.id
                 record.property_id.selling_price = record.price
+                record.property_id.state = 'offer_accepted'
             return True
 
     def refuse_action(self):

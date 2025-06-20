@@ -38,7 +38,7 @@ class estate_property(models.Model):
         ('offer_accepted','Offer Accepted'),
         ('sold','Sold'),
         ('cancelled','Cancelled')
-    ], default='new', required=True, copy=False, readonly=True, computed="_offers_state", store=True)
+    ], default='new', copy=False, readonly=True)
     property_type_id = fields.Many2one("estate_property_type", string="Property type", options="{'no_create': True, 'no_create_edit': True}")
     salesperson = fields.Many2one('res.partner', string='Salesperson', copy=False)
     buyer = fields.Char()
@@ -58,18 +58,6 @@ class estate_property(models.Model):
             min = record.expected_price/100*90
             if float_compare(min, record.selling_price, precision_digits=2) == 1:
                 raise ValidationError("Offer price must be at least 90 percent of the expected price")
-            
-    @api.depends("offer_ids.status")
-    def _offers_state(self):
-        for record in self:
-            if record.offer_ids:
-                if any(offer.status == 'accepted' for offer in record.offer_ids):
-                    record.state = 'offer_accepted'
-                else:
-                    record.state = 'offer_recived'
-            else:
-                record.state = 'new'
-                    
 
     @api.depends("living_area", "garden_area")
     def _total_area(self):
