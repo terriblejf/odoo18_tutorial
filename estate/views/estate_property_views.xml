@@ -68,7 +68,7 @@
                             </group>
                         </page>
                         <page string="Offers">
-                            <field name="offer_ids" readonly="state == 'offer_accepted'">
+                            <field name="offer_ids" readonly="state in ['cancelled', 'offer_accepted', 'sold']">
                                 <list>
                                     <field name="price"/>
                                     <field name="partner_id" string="Partner"/>
