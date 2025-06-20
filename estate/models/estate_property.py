@@ -46,12 +46,18 @@ class estate_property(models.Model):
     offer_ids = fields.One2many("estate_property_offer", "property_id")
     total_area = fields.Integer(compute="_total_area")
     best_price = fields.Float(compute="_best_price")
+    ocultar_boton = fields.Bool(default=False, compute="_ocultar_boton")
 
     _sql_constraints = [
         ('check_expected_price', 'CHECK(expected_price > 0)', 'Only positive values.'),
         ('check_selling_price', 'CHECK(selling_price > 0)', 'Only positive values.')
     ]
     
+    @api.depends("state")
+    def _ocultar_boton(self):
+        if self.state == 'sold' or self.state == 'cancelled':
+            self.ocultar_boton = True
+        
     @api.constrains("selling_price")
     def _check_selling_price(self):
         for record in self:
