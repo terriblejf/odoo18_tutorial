@@ -38,7 +38,7 @@ class estate_property(models.Model):
         ('offer_accepted','Offer Accepted'),
         ('sold','Sold'),
         ('cancelled','Cancelled')
-    ], default='new', required=True, copy=False, readonly=True, computed="_offers_state")
+    ], default='new', required=True, copy=False, readonly=True, computed="_offers_state", store=True)
     property_type_id = fields.Many2one("estate_property_type", string="Property type", options="{'no_create': True, 'no_create_edit': True}")
     salesperson = fields.Many2one('res.partner', string='Salesperson', copy=False)
     buyer = fields.Char()
@@ -67,6 +67,8 @@ class estate_property(models.Model):
                     record.state = 'offer_accepted'
                 else:
                     record.state = 'offer_recived'
+            else:
+                record.state = 'new'
                     
 
     @api.depends("living_area", "garden_area")
