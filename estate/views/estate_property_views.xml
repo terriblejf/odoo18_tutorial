@@ -4,7 +4,7 @@
         <field name="name">estate_property_view_list</field>
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
-            <list string="Properties">
+            <list string="Properties" decoration-success="state == 'offer_recived'" decoration-bf="state == 'offer_accepted'" decoration-muted="state = 'sold'" >
                 <field name="name"/>
                 <field name="postcode"/>
                 <field name="bedrooms"/>
@@ -69,14 +69,14 @@
                         </page>
                         <page string="Offers">
                             <field name="offer_ids" readonly="state in ['cancelled', 'offer_accepted', 'sold']">
-                                <list editable="bottom">
+                                <list editable="bottom" decoration-danger="status == 'refused'" decoration-success="status == 'accepted'">
                                     <field name="price"/>
                                     <field name="partner_id" string="Partner"/>
                                     <field name="vality" />
                                     <field name="date_deadline" string="Deadline"/>
                                     <button name="accept_action" string="Accept" type="object" icon="fa-check" invisible="status != False"/>
                                     <button name="refuse_action" string="Refuse" type="object" icon="fa-times" invisible="status != False"/>
-                                    <field name="status"/>
+                                    <field name="status" invisible="True"/>
                                 </list>
                             </field>
                         </page>
