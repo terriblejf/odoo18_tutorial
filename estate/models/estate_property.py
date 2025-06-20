@@ -46,7 +46,7 @@ class estate_property(models.Model):
     offer_ids = fields.One2many("estate_property_offer", "property_id")
     total_area = fields.Integer(compute="_total_area")
     best_price = fields.Float(compute="_best_price")
-    ocultar_boton = fields.Boolean(default=False, compute="_ocultar_boton", store=True)
+    ocultar_boton = fields.Boolean(default=False)
 
     _sql_constraints = [
         ('check_expected_price', 'CHECK(expected_price > 0)', 'Only positive values.'),
