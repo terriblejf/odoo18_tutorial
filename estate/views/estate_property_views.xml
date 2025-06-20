@@ -25,7 +25,7 @@
             <form>
                 <header>
                     <button name="sold_action" type="object" string="Sold" invisible="ocultar_boton == True"/>
-                    <button name="cancel_action" type="object" string="Cancel" invisible="ocultar_boton == False"/>
+                    <button name="cancel_action" type="object" string="Cancel" invisible="ocultar_boton == True"/>
                     <field name="state" widget="statusbar" statusbar_visible="new,offer_recived,offer_accepted,sold"/>
                 </header>
                 <sheet>
