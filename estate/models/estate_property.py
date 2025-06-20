@@ -46,20 +46,14 @@ class estate_property(models.Model):
     offer_ids = fields.One2many("estate_property_offer", "property_id")
     total_area = fields.Integer(compute="_total_area")
     best_price = fields.Float(compute="_best_price")
-    ocultar_boton = fields.Bool(default=False, compute="_ocultar_boton")
+    ocultar_boton = fields.Boolean(default=False, compute="_ocultar_boton")
 
     _sql_constraints = [
         ('check_expected_price', 'CHECK(expected_price > 0)', 'Only positive values.'),
         ('check_selling_price', 'CHECK(selling_price > 0)', 'Only positive values.')
     ]
     
-    @api.depends("state")
-    def _ocultar_boton(self):
-        for record in self:
-            if record.state in ('sold', 'cancelled'):
-                record.ocultar_boton = True
-            else:
-                record.ocultar_boton = False
+    
         
     @api.constrains("selling_price")
     def _check_selling_price(self):
@@ -67,7 +61,15 @@ class estate_property(models.Model):
             min = record.expected_price/100*90
             if float_compare(min, record.selling_price, precision_digits=2) == 1:
                 raise ValidationError("Offer price must be at least 90 percent of the expected price")
-
+            
+    @api.depends("state")
+    def _ocultar_boton(self):
+        for record in self:
+            if record.state in ('sold', 'cancelled'):
+                record.ocultar_boton = True
+            else:
+                record.ocultar_boton = False
+                    
     @api.depends("living_area", "garden_area")
     def _total_area(self):
         self.total_area = self.living_area + self.garden_area
