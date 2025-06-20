@@ -61,8 +61,8 @@
                                 <group>
                                     <field name="garage"/>
                                     <field name="garden"/>
-                                    <field name="garden_area"/>
-                                    <field name="garden_orientation"/>
+                                    <field name="garden_area" invisible="garden == False"/>
+                                    <field name="garden_orientation" invisible="garden == False"/>
                                     <field name="total_area"/>
                                 </group>
                             </group>
@@ -74,8 +74,8 @@
                                     <field name="partner_id" string="Partner"/>
                                     <field name="vality" />
                                     <field name="date_deadline" string="Deadline"/>
-                                    <button name="accept_action" string="Accept" type="object" icon="fa-check"/>
-                                    <button name="refuse_action" string="Refuse" type="object" icon="fa-times"/>
+                                    <button name="accept_action" string="Accept" type="object" icon="fa-check" invisible="offer_ids.status"/>
+                                    <button name="refuse_action" string="Refuse" type="object" icon="fa-times" invisible="offer_ids.status"/>
                                     <field name="status"/>
                                 </list>
                             </field>
