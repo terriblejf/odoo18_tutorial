@@ -55,8 +55,11 @@ class estate_property(models.Model):
     
     @api.depends("state")
     def _ocultar_boton(self):
-        if self.state == 'sold' or self.state == 'cancelled':
-            self.ocultar_boton = True
+        for record in self:
+            if record.state in ('sold', 'cancelled'):
+                record.ocultar_boton = True
+            else:
+                record.ocultar_boton = False
         
     @api.constrains("selling_price")
     def _check_selling_price(self):
