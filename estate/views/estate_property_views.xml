@@ -4,7 +4,7 @@
         <field name="name">estate_property_view_list</field>
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
-            <list string="Properties" decoration-success="offer_ids != False" decoration-bf="any(offer.status == 'accepted' for offer in offer_ids)" decoration-muted="state == 'sold'" >
+            <list string="Properties" decoration-success="offer_ids != False" decoration-bf="state == 'offer_accepted'" decoration-muted="state == 'sold'" >
                 <field name="name"/>
                 <field name="postcode"/>
                 <field name="bedrooms"/>
