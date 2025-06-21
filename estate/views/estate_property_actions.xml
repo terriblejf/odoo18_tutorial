@@ -4,6 +4,7 @@
         <field name="name">Properties</field>
         <field name="res_model">estate_property</field>
         <field name="view_mode">search,list,form</field>
+        <field name="context">{'search_default_available': True}</field>
     </record>
 
     <record id="estate_property_types_action" model="ir.actions.act_window">
