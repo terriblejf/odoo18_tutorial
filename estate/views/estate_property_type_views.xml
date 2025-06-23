@@ -6,10 +6,9 @@
         <field name="arch" type="xml">
             <form string="Property Type">
                 <sheet>
-                    <button name="%(estate_property_offer_action)d"
+                    <button name="estate_property_offer_action"
                             string="Offers"
                             type="action"
-                            context="{'search_default_property_type_id': active_id}"
                             domain="[('property_type_id', '=', active_id)]"
                             icon="fa-list"/>
                     <separator />
