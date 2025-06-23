@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <form string="Property Type">
                 <sheet>
-                    <button name="estate_property_offer_action"
+                    <button name="%(estate_property_offer_action)d"
                             string="Offers"
                             type="action"
                             domain="[('property_type_id', '=', active_id)]"
