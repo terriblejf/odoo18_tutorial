@@ -62,6 +62,12 @@ class estate_property(models.Model):
             if float_compare(min, record.selling_price, precision_digits=2) == 1:
                 raise ValidationError("Offer price must be at least 90 percent of the expected price")
             
+    @api.ondelete("self")
+    def _check_delete(self):
+        for record in self:
+            if record.state not in ('new', 'cancelled'):
+                UserError(f"El registro {record.name} no puede ser eliminado")
+            
     @api.depends("state")
     def _ocultar_boton(self):
         for record in self:
