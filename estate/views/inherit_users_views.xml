@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <odoo>
-    <record id="inherited_users_view_form" model="ir.ui.view">
-        <field name="name">inherited_users_view_form</field>
-        <field name="model">inherited_res_users</field>
+    <record id="inherit_users_view_form" model="ir.ui.view">
+        <field name="name">inherit_users_view_form</field>
+        <field name="model">inherit_res_users</field>
         <field name="inherit_id" ref="base.view_users_form"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
