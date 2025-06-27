@@ -121,7 +121,7 @@
         <field name="name">estate_property_view_kanban</field>
         <field name="model">estate_property</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban default_group_by="property_type_id" disable_column_drag="1">
                 <field name="state"/>
                 <templates>
                     <t t-name="kanban-box">
