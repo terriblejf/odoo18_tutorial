@@ -130,6 +130,14 @@
                             <div t-if="record.state.raw_value == 'new'">
                                 This is new!
                             </div>
+                            <field name="expected_price"/>
+                            <div t-if="record.state.raw_value != 'new'">
+                                <field name="best_price"/>
+                            </div>
+                            <div t-if="record.state.raw_value == 'sold'">
+                                <field name="selling_price"/>
+                            </div>
+                            <field name="tag_ids" widget="many2many_tags" string="Tags"/>
                         </div>
                     </t>
                 </templates>
