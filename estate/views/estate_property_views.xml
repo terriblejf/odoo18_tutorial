@@ -116,4 +116,21 @@
             </search>
         </field>
     </record>
+
+    <record id="estate_property_view_kanban" model="ir.ui.view">
+        <field name="name">estate_property_view_kanban</field>
+        <field name="model">estate_property</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <templates>
+                    <t t-name="kanban-box">
+                        <group>
+                            <field name="name"/>
+                        </group>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
 </odoo>
