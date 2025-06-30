@@ -19,7 +19,7 @@
 
     <record id="report_event_property_offers" model="ir.actions.report">
         <field name="name">Property Offers</field>
-        <field name="model">estate.estate_property</field>
+        <field name="model">estate_property</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">estate.report_property_offers</field>
         <field name="report_file">estate.report_property_offers</field>
