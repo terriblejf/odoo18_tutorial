@@ -17,6 +17,7 @@
                             <br></br>
                             <strong>Status: </strong>
                             <span t-field="property.state"/>
+                            <separator/>
                         </div>
                         <table class="table">
                             <thead>
