@@ -11,8 +11,10 @@
                         <div>
                             <strong>Salesperson: </strong>
                             <span t-field="property.salesperson"/>
+                            <br></br>
                             <strong>Expected Price: </strong>
                             <span t-field="property.expected_price"/>
+                            <br></br>
                             <strong>Status: </strong>
                             <span t-field="property.state"/>
                         </div>
