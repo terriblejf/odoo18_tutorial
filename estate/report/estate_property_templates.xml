@@ -51,7 +51,6 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </t>
                         <t t-else="">
                             <label>there are no offers yet.</label>
                         </t>
