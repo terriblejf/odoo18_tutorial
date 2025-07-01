@@ -19,7 +19,7 @@
                             <span t-field="property.state"/>
                             <separator/>
                         </div>
-                        <t t-if="property.offer_ids != False">
+                        <t t-if="property.offer_ids">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -51,6 +51,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                        </t>
                         <t t-else="">
                             <label>there are no offers yet.</label>
                         </t>
