@@ -17,7 +17,7 @@
         <field name="dpi">80</field>
     </record>
 
-    <record id="report_property_offers" model="ir.actions.report">
+    <record id="report_action_property_offers" model="ir.actions.report">
         <field name="name">Property Offers</field>
         <field name="model">estate_property</field>
         <field name="report_type">qweb-pdf</field>
@@ -29,7 +29,7 @@
         <field name="binding_type">report</field>
     </record>
 
-    <record id="report_salesperson_properties" model="ir.actions.report">
+    <record id="report_action_salesperson_properties" model="ir.actions.report">
         <field name="name">Properties</field>
         <field name="model">base.res.users</field>
         <field name="report_type">qweb-pdf</field>
