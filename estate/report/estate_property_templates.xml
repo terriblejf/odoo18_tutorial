@@ -39,7 +39,7 @@
                             <strong>Salesperson: </strong>
                             <span t-field="salesperson.name"/>
                         </div>
-                        <t t-foreach="salesman.property_ids" t-as="property">
+                        <t t-foreach="salesperson.property_ids" t-as="property">
                             <span t-field="property.name"/>
                             <br></br>
                             <strong>Expected Price: </strong>
