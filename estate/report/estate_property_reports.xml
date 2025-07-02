@@ -21,8 +21,8 @@
         <field name="name">Property Offers</field>
         <field name="model">estate_property</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">estate.report_property_offers</field>
-        <field name="report_file">estate.report_property_offers</field>
+        <field name="report_name">estate.report_template_property_offers</field>
+        <field name="report_file">estate.report_template_property_offers</field>
         <field name="print_report_name">'Property Offers - %s' % (object.name or 'Attendee').replace('/','')</field>
         <field name="paperformat_id" ref="estate.paperformat_euro_lowmargin"/>
         <field name="binding_model_id" ref="model_estate_property"/>
@@ -33,8 +33,8 @@
         <field name="name">Properties</field>
         <field name="model">base.res.users</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">estate.report_salesperson_properties</field>
-        <field name="report_file">estate.report_salesperson_properties</field>
+        <field name="report_name">estate.report_template_salesperson_properties</field>
+        <field name="report_file">estate.report_template_salesperson_properties</field>
         <field name="print_report_name">'Properties sold by %s' % (object.name or 'Attendee').replace('/','')</field>
         <field name="paperformat_id" ref="estate.paperformat_euro_lowmargin"/>
         <field name="binding_model_id" ref="base.model_res_users"/>
