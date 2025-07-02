@@ -20,8 +20,7 @@
                             <separator/>
                         </div>
                         <t t-set="offers" t-value="property.offer_ids"/>
-                        <t t-call="estate.offers_table" t-call-options="{'offers': offers}"/>  
-                        
+                        <t t-call="estate.offers_table"/>
                     </div>
                 </t>
             </t>
